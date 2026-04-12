@@ -1,0 +1,76 @@
+{
+  "name": "fisio-app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "elec:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "elec:build": "set \"NODE_OPTIONS=--max-old-space-size=4096\" && npm run build && node electron/relativize.js && electron-builder"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.17",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "docxtemplater": "^3.68.4",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
+    "next": "^15.1.0",
+    "pizzip": "^3.2.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-spreadsheet": "^0.10.1",
+    "sheetjs-style": "^0.15.8",
+    "tailwind-merge": "^3.5.0",
+    "xlsx": "^0.18.5",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^9.2.1",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wait-on": "^9.0.5"
+  },
+  "author": "Victor Hugo",
+  "description": "Sistema de Gestão de Documentos e Avaliações Posturais - Fisio Shara",
+  "build": {
+    "appId": "com.fisioapp.shara",
+    "productName": "FisioApp",
+    "copyright": "Copyright © 2026 Fisio Shara",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "public/icon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "FisioApp",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "files": [
+      "out/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "publish": null
+  }
+}

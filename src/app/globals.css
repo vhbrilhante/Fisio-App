@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdfdfd;
+  --foreground: #000000;
+  --accent: #0000ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-full: 0px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Force zero rounding app-wide */
+* {
+  border-radius: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+@utility brutalist-border {
+  border: 4px solid #000;
+}
+
+@utility brutalist-button {
+  @apply brutalist-border bg-accent text-white font-bold p-4 hover:bg-black transition-colors uppercase;
+}
+
+@utility brutalist-card {
+  @apply brutalist-border bg-white p-6;
+}
+
+@utility brutalist-input {
+  @apply brutalist-border bg-white p-4 font-bold focus:outline-none focus:ring-4 focus:ring-accent;
+}
